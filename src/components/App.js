@@ -6,11 +6,13 @@ import List from './List';
 import NotFoundPage from './NotFoundPage';
 
 
+
 class App extends Component {
 
   render() {
+
     return (
-      <div className="App">
+      <div className="App container">
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />

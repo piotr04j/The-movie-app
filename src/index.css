@@ -13,4 +13,8 @@ code {
     monospace;
 }
 
+.container-fluid {
+  padding: 0;
+}
+
 

@@ -3,16 +3,25 @@ import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
 import Home from '../Home';
-import Header from '../Header';
 import NotFoundPage from '../NotFoundPage';
-import List from '../List';
+import MoviesList from '../MoviesList';
+import Header from '../Header';
+import Root from '../Root';
+
+let wrapper;
+
+afterEach(()=>{
+    wrapper.unmount();
+});
 
 
 it('displays correctly 404 page',() => {
-    let wrapper = mount(
-        <MemoryRouter initialEntries={[ '/random' ]}>
-            <App />
-        </MemoryRouter>
+    wrapper = mount(
+        <Root>
+            <MemoryRouter initialEntries={[ '/random' ]}>
+                <App />
+            </MemoryRouter>
+        </Root>
     )
 
     expect(wrapper.find(Home)).toHaveLength(0);
@@ -21,24 +30,32 @@ it('displays correctly 404 page',() => {
 });
 
 it('displays correctly 404 page',() => {
-    let wrapper = mount(
-        <MemoryRouter initialEntries={[ '/' ]}>
-            <App />
-        </MemoryRouter>
+    wrapper = mount(
+        <Root>
+            <MemoryRouter initialEntries={[ '/' ]}>
+                <App />
+            </MemoryRouter>
+        </Root>
+
     )
 
     expect(wrapper.find(Home)).toHaveLength(1);
     expect(wrapper.find(Header)).toHaveLength(1);
+
 });
 
 it('displays correctly 404 page',() => {
-    let wrapper = mount(
-        <MemoryRouter initialEntries={[ '/list' ]}>
-            <App />
-        </MemoryRouter>
+    wrapper = mount(
+        <Root>
+            <MemoryRouter initialEntries={[ '/movies-list' ]}>
+                <App />
+            </MemoryRouter>
+        </Root>
+
     )
 
-    expect(wrapper.find(List)).toHaveLength(1);
+    expect(wrapper.find(MoviesList)).toHaveLength(1);
     expect(wrapper.find(Header)).toHaveLength(1);
+
 });
 

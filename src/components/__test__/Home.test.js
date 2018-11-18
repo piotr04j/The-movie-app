@@ -10,4 +10,4 @@ it('renders correctly', () => {
         </MemoryRouter>
     ).toJSON();
     expect(tree).toMatchSnapshot();
-  });
+});

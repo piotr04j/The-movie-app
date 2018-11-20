@@ -1,11 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import {  mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
-import Home from '../Home';
+import Home from '../Home/Home';
 import NotFoundPage from '../NotFoundPage';
-import MoviesList from '../MoviesList';
-import Header from '../Header';
+import List from '../List/ListContainer';
+import Header from '../Header/Header';
 import Root from '../Root';
 
 let wrapper;
@@ -36,7 +36,6 @@ it('displays correctly 404 page',() => {
                 <App />
             </MemoryRouter>
         </Root>
-
     )
 
     expect(wrapper.find(Home)).toHaveLength(1);
@@ -47,14 +46,13 @@ it('displays correctly 404 page',() => {
 it('displays correctly 404 page',() => {
     wrapper = mount(
         <Root>
-            <MemoryRouter initialEntries={[ '/movies-list' ]}>
+            <MemoryRouter initialEntries={[ '/list' ]}>
                 <App />
             </MemoryRouter>
         </Root>
-
     )
 
-    expect(wrapper.find(MoviesList)).toHaveLength(1);
+    expect(wrapper.find(List)).toHaveLength(1);
     expect(wrapper.find(Header)).toHaveLength(1);
 
 });

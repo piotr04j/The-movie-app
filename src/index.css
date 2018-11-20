@@ -16,5 +16,12 @@ code {
 .container-fluid {
   padding: 0;
 }
+.card-width {
+  width: 100%;
+}
 
-
+@media (max-width: 600px){
+  .card-width {
+    width: 300px;
+  }
+}

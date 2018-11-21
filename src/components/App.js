@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './Header/Header';
 import Home from './Home/Home';
-import List from './List/ListContainer';
+import MoviesList from './Lists/MoviesList';
 import NotFoundPage from './NotFoundPage';
 
 class App extends Component {
@@ -14,7 +14,8 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/list" component={List} />
+          <Route path="/movies-list/:page" component={MoviesList} />
+          <Route path="/tv-list/:page" component={MoviesList} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

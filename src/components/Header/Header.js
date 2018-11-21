@@ -17,7 +17,10 @@ const Header = () => {
                             <NavLink activeStyle={{fontWeight: "bold"}} className="nav-link" exact to="/">Home<span className="sr-only">(current)</span></NavLink>
                         </li>
                         <li className="nav-item active">
-                            <NavLink activeStyle={{fontWeight: "bold"}} className="nav-link" to="/list">Movies<span className="sr-only">(current)</span></NavLink>
+                            <NavLink activeStyle={{fontWeight: "bold"}} className="nav-link" to="/movies-list/1">Movies<span className="sr-only">(current)</span></NavLink>
+                        </li>
+                        <li className="nav-item active">
+                            <NavLink activeStyle={{fontWeight: "bold"}} className="nav-link" to="/tv-list/1">TV Shows<span className="sr-only">(current)</span></NavLink>
                         </li>
                     </ul>
                     <span className="navbar-text">

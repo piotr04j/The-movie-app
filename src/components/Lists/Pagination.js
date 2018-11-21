@@ -1,14 +1,15 @@
 import React from 'react'
 
-const Pagination = ({totalPages, currentPage, lastPage, handleFirstPage, handleLastPage}) => {
+const Pagination = ({totalPages, currentPage, lastPage, handleFirstPage, handleLastPage, handlePage}) => {
 
     let activeItem = 1; 
 
-    if( currentPage === 1 ){
+    if( currentPage === '1' ){
        activeItem = 0;
-    } else if (currentPage === lastPage) {
+    } else if (String(currentPage) === String(lastPage)) {
         activeItem = 2;
     } 
+
 
     return (
         <div className="container">
@@ -22,14 +23,14 @@ const Pagination = ({totalPages, currentPage, lastPage, handleFirstPage, handleL
                             totalPages.map( (item,index) => {              
                                 if(index === activeItem){
                                     return  (
-                                        <li key={item} className="page-item page-item active">
+                                        <li key={item} className="page-item page-item active" onClick={() => handlePage(item)}>
                                             <span className="page-link ">{item}</span>
                                             <span className="sr-only">(current)</span>
                                         </li>
                                     )
                                 } else {
                                     return  (
-                                        <li key={item} className="page-item">
+                                        <li key={item} className="page-item" onClick={() => handlePage(item)}>
                                             <span className="page-link">{item}</span>
                                         </li>
                                     )
@@ -49,9 +50,3 @@ const Pagination = ({totalPages, currentPage, lastPage, handleFirstPage, handleL
 export default Pagination;
 
 
-// <li className="page-item active">
-// <span className="page-link">
-// 2
-// 
-// </li>
-// <li className="page-item"><a className="page-link" href="#">3</a></li>

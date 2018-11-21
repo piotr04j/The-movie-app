@@ -8,7 +8,7 @@ const MovieList =({list}) => {
               return (
                 <div className="card card-width col-sm-12 col-md-5 my-3 mr-2 px-0 py-0" key={item.id}>
                     <p className="card-header">
-                      Vote average: {item.vote_average}
+                     
                     </p>
                     <img className="card-img-top img-fluid" src={`http://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="Poster" />
                     <div className="card-body">

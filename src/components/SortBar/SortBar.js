@@ -1,7 +1,13 @@
 import React from 'react';
 import SortInput from './SortInput';
 
-const SortBar = ({getOptionValue}) => {
+const SortBar = ({getOptionValue, sorting}) => {
+
+    let optionSorting = sorting === 'descending' 
+            ? [{content: 'Descending', val: 'descending'}, {content: 'Ascending', val: 'ascending'}] 
+            : [{content: 'Ascending', val: 'ascending'}, {content: 'Descending', val: 'descending'}] ;
+
+
     return (
         <form className="form-inline container justify-content-end">
             <div className="form-row mt-3 ">
@@ -16,7 +22,7 @@ const SortBar = ({getOptionValue}) => {
                     getOptionValue={getOptionValue}
                 />
                 <SortInput
-                    optionInputs={[{content: 'Descending', val: 'descending'}, {content: 'Ascending', val: 'ascending'}]}
+                    optionInputs={optionSorting}
                     label="Order"
                     getOptionValue={getOptionValue}
                 />

@@ -16,6 +16,7 @@ code {
 .container-fluid {
   padding: 0;
 }
+
 .card-width {
   width: 100%;
 }
@@ -24,4 +25,17 @@ code {
   .card-width {
     width: 300px;
   }
+}
+
+.card img {
+  max-height: 650px;
+}
+
+.card {
+  min-height: 973px;
+}
+.card .btn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }

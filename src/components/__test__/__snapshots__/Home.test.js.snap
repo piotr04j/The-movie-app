@@ -26,7 +26,7 @@ exports[`renders correctly 1`] = `
   </p>
   <a
     className="btn btn-primary btn-lg"
-    href="/movies-list"
+    href="/list"
     onClick={[Function]}
   >
     Start

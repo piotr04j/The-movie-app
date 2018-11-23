@@ -55,10 +55,27 @@ exports[`renders correctly 1`] = `
           <a
             aria-current={null}
             className="nav-link"
-            href="/list"
+            href="/movies-list/1"
             onClick={[Function]}
           >
             Movies
+            <span
+              className="sr-only"
+            >
+              (current)
+            </span>
+          </a>
+        </li>
+        <li
+          className="nav-item active"
+        >
+          <a
+            aria-current={null}
+            className="nav-link"
+            href="/tv-list/1"
+            onClick={[Function]}
+          >
+            TV Shows
             <span
               className="sr-only"
             >

@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const MovieList =({list}) => {
+const List =({list, currentPage}) => {
   return (
     <div className="container mt-3">
         <ul className="row justify-content-center">
-          {list.map( item => {
+          {list.map( (item, index) => {
               return (
                 <div className="card card-width col-sm-12 col-md-5 my-3 mr-2 px-0 py-0" key={item.id}>
                     <p className="card-header">
-                     
+                      <span className="font-weight-bold">{currentPage * 20 -19 + index}.</span> Rating: {item.vote_average}
                     </p>
                     <img className="card-img-top img-fluid" src={`http://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="Poster" />
                     <div className="card-body">
-                    <h5 className="card-title">{item.title || item.name}</h5>
-                    <p className="card-text">{item.overview}.</p>
-                    <a href="true" className="btn btn-primary">Go somewhere</a>
+                    <h5 className="card-title text-center">{item.title || item.name}</h5>
+                    <Link to={`/item/${item.id}`} className="btn btn-primary">See details</Link>
                   </div>
                 </div>
               )
@@ -25,5 +25,5 @@ const MovieList =({list}) => {
   )
 }
 
-export default MovieList;
+export default List;
 

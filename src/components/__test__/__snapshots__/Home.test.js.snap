@@ -12,7 +12,7 @@ exports[`renders correctly 1`] = `
   <p
     className="lead"
   >
-    Are you looking for informations about movies, TV series, actors and actresses?
+    Are you looking for informations about movies or TV shows?
   </p>
   <hr />
   <p>

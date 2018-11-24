@@ -17,20 +17,17 @@ export class ListContainer extends Component {
     }
 
     componentDidMount(){   //get initial data
-        axios.get(`${this.props.url}${this.props.match.params.page}`)
-            .then( movies => {
+       this.getInitialData().then( movies => {
                 this.setState({
                     dataAPI: movies.data.results,
                     lastPage: movies.data.total_pages,
                     loading: false
                 });
-                
             }).catch( err => {
-                throw new Error('DB problem connection.')
+                throw new Error('DB problem connection.');
             });
            
-            this.handlePagination();//set initial pagination
-           
+            this.handlePagination();//set initial pagination     
     };
 
     componentDidUpdate(prevProps, prevState){//if user changes page or order items set new order and pagination
@@ -40,8 +37,9 @@ export class ListContainer extends Component {
         }
     };
 
-    componentDidCatch(err,info){
-        console.log(err, info);
+
+    getInitialData = () => {
+        return axios.get(`${this.props.url}${this.props.match.params.page}`);
     }
 
     handleSetOrder = (value) => { //get sort value from Sort Component

@@ -1,15 +1,16 @@
 import React from 'react';
-import { shallow,mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import {ListContainer} from '../Lists/List/ListContainer';
-import mdbAPI from '../../config/keys';
+
 import moxios from 'moxios';
 
+let wrapper; 
 
 describe('tests ListContainer', () => {
-   const url=`https://api.themoviedb.org/3/movie/top_rated?api_key=${mdbAPI.key}&language=en-US&page=`;
-   let wrapper; 
+   
+
       
-    describe('displays components',() => {
+    describe('displays component',() => {
         beforeEach(() => {
             wrapper = shallow(<ListContainer match={{params:1}}/>);
         });
@@ -31,11 +32,73 @@ describe('tests ListContainer', () => {
         });
     });
 
-    it('calls function in componentDidMount', ()=>{
-        const spy = jest.spyOn(ListContainer.prototype, 'componentDidMount');
-        const wrapper = mount(<ListContainer match={{params:1}} />)
-        wrapper.instance().handlePagination();
-        expect(spy).toHaveBeenCalledTimes(1);
-    })
-  
+    describe('methods work',() => {
+
+        it('checks handleSetOrder', ()=> {
+            wrapper = shallow(<ListContainer match={{params: {page: 1}}}/>);
+            wrapper.instance().handleSetOrder('ascending');
+            wrapper.update();
+            expect(wrapper.state('order')).toBe('ascending');
+        });
+
+        it('checks handlePagination: page 1', ()=> {
+            wrapper = shallow(<ListContainer match={{params: {page: 1}}}/>);
+            wrapper.setState({lastPage: 100})
+            wrapper.instance().handlePagination();
+            wrapper.update();
+            expect(JSON.stringify(wrapper.state('totalPages'))).toEqual('[1,2,3,4,5]');
+        });
+
+        it('checks handlePagination: last page', ()=> {
+            wrapper = shallow(<ListContainer match={{params: {page: 100}}}/>);
+            wrapper.setState({lastPage: 100})
+            wrapper.instance().handlePagination();
+            wrapper.update();
+            expect(JSON.stringify(wrapper.state('totalPages'))).toEqual('[96,97,98,99,100]');
+        });
+
+        it('checks handlePagination: random page', ()=> {
+            wrapper = shallow(<ListContainer match={{params: {page: 57}}}/>);
+            wrapper.setState({lastPage: 100})
+            wrapper.instance().handlePagination();
+            wrapper.update();
+            expect(JSON.stringify(wrapper.state('totalPages'))).toEqual('[55,56,57,58,59]');
+        });
+
+      
+    });
+
+    describe('async methods',() => {
+
+        beforeEach(() =>{
+            moxios.install();
+            moxios.stubRequest('xxx1', {
+                status: 200,
+                response: 'hello world'
+            })
+            wrapper = shallow(<ListContainer url='xxx' match={{params: {page: 1}}}/>);
+        });
+
+        afterEach(() => {
+            moxios.uninstall();
+        });
+        
+        it('checks getInitialData',  async ()=> {       
+                const res = await wrapper.instance().getInitialData();   
+                expect(res.data).toBe("hello world");
+        });
+
+        it('checks getUpdatedData',  async ()=> {       
+            const res = await wrapper.instance().getUpdatedData();  
+            expect(res.data).toBe("hello world")
+        });
+
+        it('checks getUpdatedData',  async ()=> {       
+            const res = await wrapper.instance().getUpdatedData();  
+            expect(res.data).toBe("hello world")
+        });
+    });
+
 });
+
+    

@@ -5,6 +5,7 @@ import Home from './Home/Home';
 import MoviesList from './Lists/MoviesList';
 import TvList from './Lists/TvList';
 import NotFoundPage from './NotFoundPage';
+import Item from './Lists/List/Item';
 
 class App extends Component {
 
@@ -17,7 +18,8 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/movies-list/:page" component={MoviesList} />
           <Route path="/tv-list/:page" component={TvList} />
-          <Route path="/item/:id" component={TvList} />
+          <Route path="/item/:type/:id" component={Item} />
+          <Route path="/page-not-found" component={NotFoundPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

@@ -1,3 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default () => <h2>Not Found Page: 404</h2>;
+export default () => {
+    return (
+        <div className="container my-3">
+            <p className="font-weight-bold">Page not found</p>
+            <p>Back to home page:</p>
+            <Link to='/' className="btn btn-primary">Home Page</Link>
+        </div>
+    )
+};

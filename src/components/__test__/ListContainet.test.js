@@ -83,20 +83,11 @@ describe('tests ListContainer', () => {
             moxios.uninstall();
         });
         
-        it('checks getInitialData',  async ()=> {       
-                const res = await wrapper.instance().getInitialData();   
-                expect(res.data).toBe("hello world");
-        });
-
         it('checks getUpdatedData',  async ()=> {       
             const res = await wrapper.instance().getUpdatedData();  
             expect(res.data).toBe("hello world")
         });
 
-        it('checks getUpdatedData',  async ()=> {       
-            const res = await wrapper.instance().getUpdatedData();  
-            expect(res.data).toBe("hello world")
-        });
     });
 
 });

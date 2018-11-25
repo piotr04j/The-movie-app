@@ -14,7 +14,7 @@ class ErrorBoundary extends Component {
     render(){
         if (this.state.hasError){
             return (
-                <div className="container">
+                <div className="container my-3">
                     <p className="text-center font-weight-bold">Error: {this.state.errorMessage}</p>
                     <p>Back to home page:</p>
                     <Link to='/' className="btn btn-primary">Home Page</Link>

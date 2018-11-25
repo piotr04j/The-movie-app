@@ -17,7 +17,7 @@ export class ListContainer extends Component {
     }
 
     componentDidMount(){   //get initial data
-       this.getInitialData().then( movies => {
+        axios.get(`${this.props.url}${this.props.match.params.page}`).then( movies => {
                 this.setState({
                     dataAPI: movies.data.results,
                     lastPage: movies.data.total_pages,
@@ -26,8 +26,7 @@ export class ListContainer extends Component {
             }).catch( err => {
                 throw new Error('DB problem connection.');
             });
-           
-            this.handlePagination();//set initial pagination     
+            this.handlePagination();
     };
 
     componentDidUpdate(prevProps, prevState){//if user changes page or order items set new order and pagination
@@ -36,11 +35,6 @@ export class ListContainer extends Component {
           this.handlePagination();
         }
     };
-
-
-    getInitialData = () => {
-        return axios.get(`${this.props.url}${this.props.match.params.page}`);
-    }
 
     handleSetOrder = (value) => { //get sort value from Sort Component
         this.setState({ order: value});
@@ -116,7 +110,7 @@ export class ListContainer extends Component {
             <div>
                 {this.state.loading ===true ? <Modal /> : null}
                 <SortBar handleSetOrder={this.handleSetOrder} />
-                <List list={this.state.dataAPI} currentPage={this.props.match.params.page}/>
+                <List url={`${this.props.url}`} list={this.state.dataAPI} currentPage={this.props.match.params.page}/>
                 <Pagination  
                     currentPage={this.props.match.params.page}
                     lastPage={this.state.lastPage}

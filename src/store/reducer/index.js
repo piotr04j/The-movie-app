@@ -5,7 +5,7 @@ export default (state, action) => {
         case actionsTypes.FETCH_SEARCHED_DATA: 
             return {
                 ...state,
-                searchedData: action.payload
+                query: action.payload
             }
         default:
             return state;

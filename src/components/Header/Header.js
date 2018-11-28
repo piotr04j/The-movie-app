@@ -22,6 +22,9 @@ const Header = () => {
                         <li className="nav-item active">
                             <NavLink activeStyle={{fontWeight: "bold"}} className="nav-link" to="/tv-list/1">TV Shows<span className="sr-only">(current)</span></NavLink>
                         </li>
+                        <li className="nav-item active">
+                            <a className="nav-link" href="http://piotrjalocha.com/">Portfolio<span className="sr-only">(current)</span></a>
+                        </li>
                     </ul>
                     <span className="navbar-text">
                         <SearchEngine />

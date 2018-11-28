@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="footer bg-primary"
+>
+  <div
+    className="container"
+  >
+    <img
+      alt="API Logo"
+      className="img-fluid"
+      src="/images/logo.png"
+    />
+    <p>
+      This product uses the TMDb API but is not endorsed or certified by TMDb
+    </p>
+  </div>
+</div>
+`;

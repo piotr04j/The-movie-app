@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default () => {
     return (
-        <div className="jumbotron shadow-lg container">
+        <div className="jumbotron shadow-lg container my-5">
             <h1 className="display-4">The movie app!</h1>
             <p className="lead">Are you looking for informations about movies or TV shows?</p>
             <hr />

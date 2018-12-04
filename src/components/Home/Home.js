@@ -8,7 +8,7 @@ export default () => {
             <p className="lead">Are you looking for informations about movies or TV shows?</p>
             <hr />
             <p>If <span className="font-weight-bold text-uppercase">yes</span> then you are in the good place in the web.</p>
-            <Link to="/list" className="btn btn-primary btn-lg">Start</Link>
+            <Link to="/movies-list/1" className="btn btn-primary btn-lg">Start</Link>
         </div>
     );
 };

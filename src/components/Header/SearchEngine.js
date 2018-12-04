@@ -24,7 +24,7 @@ export class SearchEngine extends Component {
         return (
             <form className="form-inline" onSubmit={this.handleSubmit}>
                 <input className="form-control mr-sm-2" type="text" placeholder="Search..." min="3" value={this.state.formValue} aria-label="Search" onChange={this.handleInputValue} />
-                <input className="btn btn-outline-success my-2 my-sm-0 btn-active-success" type="submit" value="Search" disabled={this.state.formValue.length > 5 ? false: true} />
+                <input className="btn btn-outline-success my-2 my-sm-0 btn-active-success" type="submit" value="Search" disabled={this.state.formValue.length > 4 ? false: true} />
             </form>
         )
     }

@@ -7,7 +7,7 @@ const ResultItem = (props) => {
     } else if (props.profile_path){
         url += props.profile_path;
     } else {
-        url = "/images/example.jpg";
+        url = "/images/camera.jpg";
     }
 
     return (

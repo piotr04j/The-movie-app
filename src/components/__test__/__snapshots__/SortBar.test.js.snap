@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<form
+  className="form-inline container justify-content-end"
+>
+  <div
+    className="form-row mt-3 "
+  >
+    <div
+      className="col"
+    >
+      <label
+        className="sr-only"
+        htmlFor="inlineFormCustomSelectPref--one"
+      >
+        Order
+      </label>
+      <select
+        className="custom-select"
+        id="inlineFormCustomSelectPref--one"
+        onChange={[Function]}
+        value="descending"
+      >
+        <option
+          value="descending"
+        >
+          Descending
+        </option>
+        <option
+          value="ascending"
+        >
+          Ascending
+        </option>
+      </select>
+    </div>
+  </div>
+</form>
+`;

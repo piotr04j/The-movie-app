@@ -7,8 +7,6 @@ import moxios from 'moxios';
 let wrapper; 
 
 describe('tests ListContainer', () => {
-   
-
       
     describe('displays component',() => {
         beforeEach(() => {
@@ -72,11 +70,11 @@ describe('tests ListContainer', () => {
 
         beforeEach(() =>{
             moxios.install();
-            moxios.stubRequest('xxx1', {
+            moxios.stubRequest('random_url1', {
                 status: 200,
                 response: 'hello world'
             })
-            wrapper = shallow(<ListContainer url='xxx' match={{params: {page: 1}}}/>);
+            wrapper = shallow(<ListContainer url='random_url' match={{params: {page: 1}}}/>);
         });
 
         afterEach(() => {

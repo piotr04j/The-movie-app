@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { SearchEngine } from '../Header/SearchEngine';
 
-
 describe('the form test',()=>{
 
     let wrapper;
@@ -10,7 +9,7 @@ describe('the form test',()=>{
 
     beforeEach(()=>{
 
-        wrapper = shallow(<SearchEngine  fetchSearchedData={mockLoginfn} />);
+        wrapper = shallow(<SearchEngine history={{push:mockLoginfn}} fetchSearchedData={mockLoginfn} />);
         wrapper.find('input[type="text"]').simulate('change', { target: { value: 'some data' } });
     });
 
@@ -21,7 +20,7 @@ describe('the form test',()=>{
 
     it('invokes dispatch action after submit form', () =>{
         wrapper.find('form').simulate('submit',{preventDefault() {}});
-        expect(mockLoginfn.mock.calls.length).toBe(1)
+        expect(mockLoginfn).toHaveBeenCalledTimes(2);
     });
     
     it('clears input after submit form', () =>{

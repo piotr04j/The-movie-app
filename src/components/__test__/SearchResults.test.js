@@ -1,32 +1,31 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { SearchResults } from '../SearchResults/SearchResults';
-import mdbAPI from '../../config/keys';
-import moxios from 'moxios';
 
 let wrapper;
 
 describe('tests SearchResultsr', () => {
 
-    describe('async methods',() => {
 
-        let url = `https://api.themoviedb.org/3/search/multi?api_key=${mdbAPI.key}&language=en-US&query=random_query&page=1&include_adult=false`
+        // it('displays Modal correctly', () => {
+        //     wrapper = shallow(<SearchResults query='random_query' />);
+        //     wrapper.setState({loading: false});  
+        //     wrapper.update();
+        //     expect(wrapper.find('Modal').length).toBe(0);
+        // });
 
-        beforeEach(() =>{
-            moxios.install();
-            moxios.stubRequest(url, {
-                status: 200,
-                response: { res: { data: { total_results: 3}}}
-            })
-
-            wrapper = shallow(<SearchResults query='random_query' />);
-
+        it('displays if user dosen\'t have results', () => {
+            wrapper = shallow(<SearchResults dataApi={{total_results: 0, results: [{id: 1},{id: 2},{id: 3},{id: 4}]}} />);
+            expect(wrapper.find('p').text()).toBe('Please try another search. No results matched your search.');
         });
 
-        afterEach(() => {
-            moxios.uninstall();
+        it('displays Note correctly', () => {
+            wrapper = shallow(<SearchResults dataApi={{total_results: 11, results: [{id: 1},{id: 2},{id: 3},{id: 4}]}} />);
+            expect(wrapper.find('Note').length).toBe(1);
+        });
+        it('displays ResultItem correctly', () => {
+            wrapper = shallow(<SearchResults dataApi={{results: [{id: 1},{id: 2},{id: 3},{id: 4}]}} />);
+            expect(wrapper.find('ResultItem').length).toBe(4);
         });
        
-    });
-
 });

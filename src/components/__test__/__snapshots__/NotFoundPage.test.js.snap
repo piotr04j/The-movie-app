@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="container my-3"
+>
+  <p
+    className="font-weight-bold"
+  >
+    Page not found
+  </p>
+  <p>
+    Back to home page:
+  </p>
+  <a
+    className="btn btn-primary"
+    href="/"
+    onClick={[Function]}
+  >
+    Home Page
+  </a>
+</div>
+`;

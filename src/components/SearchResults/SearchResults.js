@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import mdbAPI from '../../config/keys';
 import ResultItem from './ResultItem';
 import Note from './Note';
 import Modal from '../Modal/Modal';
@@ -10,37 +8,11 @@ import ErrorBoundary from '../Hoc/ErrorBoundary';
 export class SearchResults extends Component {
 
     state = {
-        dataAPI: [],
-        totalResult: -1,
-        loading: true
+        loading: false
     }
-
-    componentDidMount(){
-        axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${mdbAPI.key}&language=en-US&query=${this.props.query}&page=1&include_adult=false`)
-            .then( res => {
-                this.setState({dataAPI: res.data.results, totalResult: res.data.total_results, loading: false});         
-            }).catch( err => {
-                throw new Error('DB problem connection.');
-            });  
-    }
-
-    componentDidUpdate(prevProps){
-       
-        if(this.props.query !== prevProps.query ){
-            this.setState({ loading: true});
-            axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${mdbAPI.key}&language=en-US&query=${this.props.query}&page=1&include_adult=false`)
-            .then( res => {
-                this.setState({dataAPI: res.data.results, totalResult: res.data.total_results, loading: false});
-            }).catch( err => {
-                throw new Error('DB problem connection.');
-            });
-        }
-    }
-     
 
     render () {
-       
-        if(this.state.totalResult === 0){
+        if(this.props.dataApi.total_results === 0){
             return (
                 <ErrorBoundary>
                     <div className="container my-5">
@@ -50,13 +22,13 @@ export class SearchResults extends Component {
                 </ErrorBoundary>
             )
         }
-      
+        
         return (   
             <ErrorBoundary>    
                 <div className="container">
                     {this.state.loading ? <Modal /> : null}
-                    {this.state.totalResult > 1 ? <Note /> : null}
-                    {this.state.dataAPI.map( item => {   
+                    {this.props.dataApi.total_results > 1 ? <Note /> : null}
+                    {this.props.dataApi.results.map( item => {   
                         return <ResultItem key={item.id} {...item} />
                         })
                     }
@@ -68,7 +40,7 @@ export class SearchResults extends Component {
 
 const mapStateToProps = state => {
     return {
-        query: state.query
+        dataApi: state.dataApi
     }
 }
 

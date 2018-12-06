@@ -8,6 +8,9 @@ import MoviesList from '../Lists/MoviesList';
 import TvList from '../Lists/TvList';
 import Header from '../Header/Header';
 import Root from '../Root';
+import Item from '../Lists/List/Item';
+import SearchResults from '../SearchResults/SearchResults';
+import Footer from '../Footer/Footer';
 
 let wrapper;
 
@@ -28,9 +31,11 @@ it('displays correctly 404 page',() => {
     expect(wrapper.find(Home)).toHaveLength(0);
     expect(wrapper.find(NotFoundPage)).toHaveLength(1);
     expect(wrapper.find(Header)).toHaveLength(1);
+    expect(wrapper.find(Footer)).toHaveLength(1);
+
 });
 
-it('displays correctly Tv shows',() => {
+it('displays correctly movies shows',() => {
     wrapper = mount(
         <Root>
             <MemoryRouter initialEntries={[ '/movies-list/:page' ]}>
@@ -41,10 +46,12 @@ it('displays correctly Tv shows',() => {
 
     expect(wrapper.find(MoviesList)).toHaveLength(1);
     expect(wrapper.find(Header)).toHaveLength(1);
+    expect(wrapper.find(Footer)).toHaveLength(1);
+
 
 });
 
-it('displays correctly movies',() => {
+it('displays correctly TV',() => {
     wrapper = mount(
         <Root>
             <MemoryRouter initialEntries={[ '/tv-list/:page' ]}>
@@ -55,6 +62,51 @@ it('displays correctly movies',() => {
 
     expect(wrapper.find(TvList)).toHaveLength(1);
     expect(wrapper.find(Header)).toHaveLength(1);
+    expect(wrapper.find(Footer)).toHaveLength(1);
 
+
+});
+
+it('displays correctly Item details',() => {
+    wrapper = mount(
+        <Root>
+            <MemoryRouter initialEntries={[ '/item/tv/1' ]}>
+                <App />
+            </MemoryRouter>
+        </Root>
+    )
+
+    expect(wrapper.find(Item)).toHaveLength(1);
+    expect(wrapper.find(Header)).toHaveLength(1);
+    expect(wrapper.find(Footer)).toHaveLength(1);
+
+});
+
+it('displays correctly Item details',() => {
+    wrapper = mount(
+        <Root>
+            <MemoryRouter initialEntries={[ '/results' ]}>
+                <App />
+            </MemoryRouter>
+        </Root>
+    )
+
+    expect(wrapper.find(SearchResults)).toHaveLength(1);
+    expect(wrapper.find(Header)).toHaveLength(1);
+    expect(wrapper.find(Footer)).toHaveLength(1);
+});
+
+it('displays correctly NotFoundPage details',() => {
+    wrapper = mount(
+        <Root>
+            <MemoryRouter initialEntries={[ '/page-not-found' ]}>
+                <App />
+            </MemoryRouter>
+        </Root>
+    )
+
+    expect(wrapper.find(NotFoundPage)).toHaveLength(1);
+    expect(wrapper.find(Header)).toHaveLength(1);
+    expect(wrapper.find(Footer)).toHaveLength(1);
 });
 

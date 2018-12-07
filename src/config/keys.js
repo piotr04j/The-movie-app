@@ -1,1 +1,1 @@
-export default   { keyTMDBapi: '064f93ab5b3de90df6871f296d5194f3'};
+export default  {key: '064f93ab5b3de90df6871f296d5194f3'} ;

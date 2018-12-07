@@ -5,7 +5,7 @@ import SortBar from './SortBar/SortBar';
 import List from './List';
 import Pagination from './Pagination';
 import Modal from '../../Modal/Modal';
-import ErrorBoundary from '../../Hoc';
+import ErrorBoundary from '../../Hoc/ErrorBoundary';
 
 export class ListContainer extends Component {
 

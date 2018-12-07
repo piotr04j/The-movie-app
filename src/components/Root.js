@@ -18,14 +18,3 @@ const RootStore = ({children}) => {
 };
 
 export default RootStore;
-// const RootStore = ({children, initialState = { }}) => {
-//     const store = createStore(reducer, initialState={dataApi: {total_results: -1, results: []}, loading: true}, composeWithDevTools(applyMiddleware(thunk)));
-
-//     return (
-//         <Provider store={store}>
-//             {children}
-//         </Provider>
-//     )
-// };
-
-// export default RootStore;

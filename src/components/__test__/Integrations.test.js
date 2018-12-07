@@ -7,6 +7,7 @@ import App from '../App';
 import moxios from 'moxios';
 
 
+
 let wrapper;
 
 describe('test  Listcontainer compnent', () => {
@@ -44,28 +45,36 @@ describe('test  Listcontainer compnent', () => {
     });
 });
 
-// describe('test  search engine across app', () => {
+describe('test search engine across app', () => {
 
-//     afterEach(() =>{
-//         moxios.uninstall();
-//         wrapper.unmount();
-//     });
+    beforeEach(() => {
+        wrapper = mount(<MemoryRouter><Root><App /></Root></MemoryRouter>);
+        moxios.install();
+        moxios.stubRequest('https://api.themoviedb.org/3/search/multi?api_key=064f93ab5b3de90df6871f296d5194f3&language=en-US&query=random__title&page=1&include_adult=false', {
+            status: 200,
+            response: { results: [{id: 1, title: 'random__title'}, {id: 2, title: 'random__title2'}], total_results: 2}
+        });
+    })
+
+    afterEach(() => {
+        moxios.uninstall();
+        wrapper.unmount();
+    })
     
-//     it('test search result ', ()=> {
-//         moxios.install();
-//         moxios.stubRequest('http://jsonplaceholder.typicode.com/comments', {
-//             status: 200,
-//             response: [{name: 'comment one'},{name: 'comment two'}]
-//         });
-//         wrapper = mount(<MemoryRouter><Root><App /></Root></MemoryRouter>);
-//         wrapper.find('SearchEngine').find('[type="text"]').simulate('change', {
-//             target: {value: 'random title'}
-//         });
-//         // wrapper.find('SearchEngine').find('[type="text"]').({formValue: 'hello'})
-//         // wrapper.find('SearchEngine').setState({formValue: 'hello'})
-//         wrapper.find('Header').find('form').simulate('submit',  { preventDefault: jest.fn() })
-//         wrapper.update();
-//         expect(wrapper.find('SearchResults').props()).toBe(2)
-//     });
+    it('test search result ', (done)=> {
+
+        wrapper.find('SearchEngine').find('[type="text"]').simulate('change', {
+            target: {value: 'random__title'}
+        });
+        
+        wrapper.find('Header').find('form').simulate('submit',  { preventDefault: jest.fn() });
+ 
+        moxios.wait(() => {
+            wrapper.update();
+            expect(wrapper.find('SearchResults').find('ResultItem').length).toBe(2);
+            done();
+        })
+      
+    });
     
-// });
+});

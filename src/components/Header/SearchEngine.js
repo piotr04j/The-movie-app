@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { fetchSearchedData } from '../../store/actions';
+import { fetchSearchedData, startLoading } from '../../store/actions';
+
 
 export class SearchEngine extends Component {
 
@@ -24,7 +25,7 @@ export class SearchEngine extends Component {
         return (
             <form className="form-inline" onSubmit={this.handleSubmit}>
                 <input className="form-control mr-sm-2" type="text" placeholder="Search..." min="3" value={this.state.formValue} aria-label="Search" onChange={this.handleInputValue} />
-                <input className="btn btn-outline-success my-2 my-sm-0 btn-active-success" type="submit" value="Search" disabled={this.state.formValue.length > 4 ? false: true} />
+                <input className="btn btn-outline-success my-2 my-sm-0 btn-active-success" type="submit" value="Search" disabled={this.state.formValue.length > 4 ? false: true} onClick={this.props.startLoading}/>
             </form>
         )
     }
@@ -32,7 +33,8 @@ export class SearchEngine extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchSearchedData: (data) => dispatch(fetchSearchedData(data))
+        fetchSearchedData: (data) => dispatch(fetchSearchedData(data)),
+        startLoading: () => dispatch(startLoading())
     }
 }
 

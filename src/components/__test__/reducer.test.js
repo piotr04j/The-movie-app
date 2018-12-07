@@ -8,6 +8,10 @@ describe('test reducer', () => {
     });
     
     it('should handle FETCH_SEARCHED_DATA', () =>{
-        expect(reducer({},{ type: actionsTypes.FETCH_SEARCHED_DATA, payload: 'Hello world'})).toEqual({dataApi: 'Hello world'});
+        expect(reducer({},{ type: actionsTypes.FETCH_SEARCHED_DATA, payload: 'Hello world'})).toEqual({dataApi: 'Hello world', loading: false});
+    });
+
+    it('should handle START_LOADING', () =>{
+        expect(reducer({},{ type: actionsTypes.START_LOADING, payload: false})).toEqual({loading: false});
     });
 });

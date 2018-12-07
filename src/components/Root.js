@@ -5,8 +5,10 @@ import thunk from 'redux-thunk'
 import reducer from '../store/reducer';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
-const RootStore = ({children, initialState = { }}) => {
-    const store = createStore(reducer, initialState={dataApi: {total_results: -1, results: []}}, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(reducer, {dataApi: {total_results: -1, results: []}, loading: true}, composeWithDevTools(applyMiddleware(thunk)));
+
+
+const RootStore = ({children}) => {
 
     return (
         <Provider store={store}>
@@ -16,3 +18,14 @@ const RootStore = ({children, initialState = { }}) => {
 };
 
 export default RootStore;
+// const RootStore = ({children, initialState = { }}) => {
+//     const store = createStore(reducer, initialState={dataApi: {total_results: -1, results: []}, loading: true}, composeWithDevTools(applyMiddleware(thunk)));
+
+//     return (
+//         <Provider store={store}>
+//             {children}
+//         </Provider>
+//     )
+// };
+
+// export default RootStore;

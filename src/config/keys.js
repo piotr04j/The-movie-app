@@ -1,18 +1,1 @@
-
-// import key from './devKeys';
-// import keyPro from './prodKeys';
-
-
-// let keys = {};
-
-// if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-//     keys = {
-//         key: key.keyTMDBapi
-//     }
-// } else {
-    // keys = {
-    //     key: keyPro.keyTMDBapi
-    // }
-// }
-
-export default   { keyTMDBapi: process.env.keyTMDBapi };
+export default   { keyTMDBapi: '064f93ab5b3de90df6871f296d5194f3'};

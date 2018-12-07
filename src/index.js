@@ -10,7 +10,7 @@ import * as serviceWorker from './serviceWorker';
 
 const app = (
     <Root>
-        <BrowserRouter basename="/the-movie-app">
+        <BrowserRouter>
             <App />
         </BrowserRouter>
     </Root>

@@ -1,7 +1,6 @@
 {
   "name": "the-movie-app",
   "version": "0.1.0",
-  "homepage": "http://piotrjalocha.com/the-movie-app/",
   "private": true,
   "engines": {
     "npm": "6.4.1",

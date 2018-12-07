@@ -1,16 +1,5 @@
-import * as key from './devKeys';
-
-let keys = {};
-
-if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-    keys = {
-        key: key.keyTMDBapi
-    }
+if(process.env.NODE_ENV === 'production'){
+    module.exports = require('./prodKeys');
 } else {
-    keys = {
-        key: process.env.keyTMDBapi
-    }
+    module.exports = require('./devKeys');
 }
-
-
-export default keys;

@@ -1,5 +1,18 @@
-if(process.env.NODE_ENV === 'production'){
-    module.exports = require('./prodKeys');
+
+import key from './devKeys';
+import keyPro from './prodKeys';
+
+
+let keys = {};
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    keys = {
+        key: key.keyTMDBapi
+    }
 } else {
-    module.exports = require('./devKeys');
+    keys = {
+        key: keyPro.keyTMDBapi
+    }
 }
+
+export default keys;

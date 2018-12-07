@@ -5,7 +5,7 @@ import SortBar from './SortBar/SortBar';
 import List from './List';
 import Pagination from './Pagination';
 import Modal from '../../Modal/Modal';
-import ErrorBoundary from '../../Hoc/ErrorBoundary';
+
 
 export class ListContainer extends Component {
 
@@ -108,21 +108,19 @@ export class ListContainer extends Component {
 
     render(){
         return (
-            <ErrorBoundary>
-                <div>
-                    {this.state.loading ===true ? <Modal /> : null}
-                    <SortBar handleSetOrder={this.handleSetOrder} />
-                    <List url={`${this.props.url}`} list={this.state.dataAPI} currentPage={this.props.match.params.page}/>
-                    <Pagination  
-                        currentPage={this.props.match.params.page}
-                        lastPage={this.state.lastPage}
-                        totalPages={this.state.totalPages}
-                        handleFirstPage = {this.handleFirstPage}
-                        handleLastPage = {this.handleLastPage}
-                        handlePage = {this.handlePage}
-                    />
-                </div>
-            </ErrorBoundary>
+            <div>
+                {this.state.loading ===true ? <Modal /> : null}
+                <SortBar handleSetOrder={this.handleSetOrder} />
+                <List url={`${this.props.url}`} list={this.state.dataAPI} currentPage={this.props.match.params.page}/>
+                <Pagination  
+                    currentPage={this.props.match.params.page}
+                    lastPage={this.state.lastPage}
+                    totalPages={this.state.totalPages}
+                    handleFirstPage = {this.handleFirstPage}
+                    handleLastPage = {this.handleLastPage}
+                    handlePage = {this.handlePage}
+                />
+            </div>
         )
     }
 }

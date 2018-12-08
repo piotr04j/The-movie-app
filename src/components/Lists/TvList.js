@@ -5,7 +5,7 @@ import ErrorBoundary from '../Hoc/ErrorBoundary';
 
 const MoviesList = () => {
 
-    const url= `https://aapi.themoviedb.org/3/tv/top_rated?api_key=${mdbAPI.key}&language=en-US&page=`
+    const url= `https://api.themoviedb.org/3/tv/top_rated?api_key=${mdbAPI.key}&language=en-US&page=`
 
     return (
         <ErrorBoundary>

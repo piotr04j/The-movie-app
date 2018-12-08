@@ -19,17 +19,17 @@ export class ListContainer extends Component {
 
     componentDidMount(){   //get initial data
         
-        throw new Error('test');
-        // axios.get(`${this.props.url}${this.props.match.params.page}`).then( movies => {
-        //         this.setState({
-        //             dataAPI: movies.data.results,
-        //             lastPage: movies.data.total_pages,
-        //             loading: false
-        //         });
-        //         this.handlePagination();
-        //     }).catch( err => {
-        //         throw new Error('DB problem connection.');
-        //     });
+        
+        axios.get(`${this.props.url}${this.props.match.params.page}`).then( movies => {
+                this.setState({
+                    dataAPI: movies.data.results,
+                    lastPage: movies.data.total_pages,
+                    loading: false
+                });
+                this.handlePagination();
+            }).catch( err => {
+                this.throw(err)
+            });
         
     };
 

@@ -28,7 +28,7 @@ export class ListContainer extends Component {
                 });
                 this.handlePagination();
             }).catch( err => {
-                this.throw(err)
+                this.props.history.push('/page-not-found');
             });
         
     };
@@ -62,14 +62,14 @@ export class ListContainer extends Component {
                 this.setState({loading: false})
                 return await axios.get(`${this.props.url}${(this.state.lastPage + 1 ) - this.props.match.params.page}`);
             } catch {
-                throw new Error('DB problem connection.');
+                this.props.history.push('/page-not-found');
             }
         }
         try {
             this.setState({loading: false})
             return await axios.get(`${this.props.url}${this.props.match.params.page}`);
         } catch {
-            throw new Error('DB problem connection.');
+                this.props.history.push('/page-not-found');
         }
         
     }
@@ -124,7 +124,6 @@ export class ListContainer extends Component {
                     handleLastPage = {this.handleLastPage}
                     handlePage = {this.handlePage}
                 />
-                <button onClick={() => { throw new Error('sss')}}>err</button>
             </div>
         )
     }

@@ -15,8 +15,8 @@ export const fetchSearchedData =  (data) =>{
 
 
 export const startLoading = () => {
-        return {
-            type: actionsTypes.START_LOADING,
-            payload: true
-        }
+    return {
+        type: actionsTypes.START_LOADING,
+        payload: true
+    }
 }

@@ -108,6 +108,7 @@ export class ListContainer extends Component {
     handlePage = (page) => {//show page and set pagiantion
         this.props.history.push(`${this.props.match.path.replace(':page','')}${page}`)
         this.handlePagination();
+        throw new Error('test')
     }
 
     render(){

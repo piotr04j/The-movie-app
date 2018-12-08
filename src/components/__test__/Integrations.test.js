@@ -24,15 +24,19 @@ describe('test  Listcontainer compnent', () => {
     });
     
     it('tests handlePage', ()=> {
+      
         wrapper = mount( <ListContainer match={{params: {page: 17}}}/> );
         wrapper.setState({lastPage: 100});
+        wrapper.instance().handlePagination();
         wrapper.update();
-        expect(wrapper.find('Pagination').find('li').at(3).hasClass('active')).toBe(true);
+        expect(wrapper.find('Pagination').find('li').length).toBe(7);
+   
     });
 
     it('tests handleFirstPage', ()=> {
         wrapper = mount( <ListContainer match={{params: {page: 1}}}/> );
         wrapper.setState({lastPage: 100});
+        wrapper.instance().handlePagination();
         wrapper.update();
         expect(wrapper.find('Pagination').find('li').first().hasClass('disabled')).toBe(true);
     });
@@ -40,6 +44,7 @@ describe('test  Listcontainer compnent', () => {
     it('sets  order items', ()=> {
         wrapper = mount( <ListContainer match={{params: {page: 1}}}/> );
         wrapper.find('select').simulate('change',{ target: { value: 'ascending'}, preventDefault: () => {}});
+        wrapper.instance().handlePagination();
         wrapper.update();
         expect(wrapper.state('order')).toBe('ascending');
     });

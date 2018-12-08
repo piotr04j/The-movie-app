@@ -24,10 +24,11 @@ export class ListContainer extends Component {
                     lastPage: movies.data.total_pages,
                     loading: false
                 });
+                this.handlePagination();
             }).catch( err => {
                 throw new Error('DB problem connection.');
             });
-            this.handlePagination();
+        
     };
 
     componentDidUpdate(prevProps, prevState){//if user changes page or order items set new order and pagination
@@ -74,6 +75,7 @@ export class ListContainer extends Component {
     handlePagination = () => { //set pagination
         let currentPage = +this.props.match.params.page;// correction data type to number
         let lastPage = this.state.lastPage;
+        
         let pagesArr = [];
         if( currentPage >= 3 && currentPage < lastPage - 2){ //if user chooses page greater than 2 
             for(let i = 1 ;i <= 5;i++){                      //or if user chooses page smaller than page - 2 from the end of array 
